@@ -123,3 +123,14 @@ Make sure you have done everything on the main part and bonus. Deploy and test e
 7. Do not copy-paste code from anywhere. Write your code and put your best effort into this assignment.
 
 Have FUN! Have Patience. You will make it. 🔥🔥🔥
+
+Hardware Zone
+background: #EAEDED
+card-background: #FFFFFF;
+navbar-color: #232f3e; footer 232F3E
+add to card: #232F3E;
+Bye Now: #232F3E
+
+Big Sale
+Hand Tools
+Power Saw Machine

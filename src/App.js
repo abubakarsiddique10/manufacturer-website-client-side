@@ -1,11 +1,15 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <div>
-      <div className="App px-4 mx-auto max-w-7xl bg-gray-300">
-        <h1>Tailwind css</h1>
-      </div>
+    <div className="background">
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
     </div>
   );
 }
