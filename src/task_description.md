@@ -134,3 +134,11 @@ Bye Now: #232F3E
 Big Sale
 Hand Tools
 Power Saw Machine
+
+
+
+WELCOME TO
+ELECTRIX
+Our product portfolio is comprised of the most trusted brands and we offering the finest customer service. We offer top quality products at reasonable prices, provide unparalleled technical assistance, and back it all up with outstanding customer support.
+
+ABOUT US

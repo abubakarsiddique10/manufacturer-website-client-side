@@ -1,9 +1,11 @@
 import React from "react";
+import Banner from "./Banner";
+import Tools from "./Tools";
 const Home = () => {
-    return (
-        <div>
-            <h1>HOme page</h1>
-        </div>
+    return (<>
+        <Banner />
+        <Tools />
+    </>
     )
 }
 export default Home;

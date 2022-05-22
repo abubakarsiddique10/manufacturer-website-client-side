@@ -13,7 +13,7 @@ const Header = () => {
             <nav>
                 <div class="navbar justify-between px-4 mx-auto max-w-7xl">
                     <div class="navbar-start">
-                        <Link to='/' className="btn btn-ghost normal-case text-xl">Hardware Zone</Link>
+                        <Link to='/' className="btn btn-ghost normal-case text-xl px-0">Hardware Zone</Link>
                     </div>
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
