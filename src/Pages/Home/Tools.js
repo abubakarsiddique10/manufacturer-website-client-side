@@ -8,6 +8,7 @@ import img6 from '../../assets/images/tools/tool6.png';
 import img7 from '../../assets/images/tools/tool7.png';
 import img8 from '../../assets/images/tools/tool1.png';
 import Tool from "./Tool";
+
 const Tools = () => {
 
     const tools = [

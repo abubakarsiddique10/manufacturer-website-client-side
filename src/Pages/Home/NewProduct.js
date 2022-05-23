@@ -1,6 +1,6 @@
 import React from "react";
 const NewProduct = ({ tool }) => {
-    const { card1, card2, card3, card4, image } = tool;
+    const { card1, card2, card3, card4 } = tool;
     return (
         <div className="grid grid-cols-2 gap-4 bg-white">
             <div class="card lg:w-lg h-auto">
