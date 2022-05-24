@@ -3,6 +3,8 @@ import Banner from "./Banner";
 import BestSell from "./BestSell";
 import NewProducts from "./NewProducts";
 import OurPolicy from "./OurPolicy";
+import Reviews from "./Reviews";
+import Summary from "./Summary";
 import Tools from "./Tools";
 const Home = () => {
     return (<>
@@ -10,6 +12,8 @@ const Home = () => {
         <OurPolicy />
         <Tools />
         <NewProducts />
+        <Summary />
+        <Reviews />
         <BestSell />
     </>
     )
