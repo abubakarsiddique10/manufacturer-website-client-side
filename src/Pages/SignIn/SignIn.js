@@ -12,7 +12,7 @@ const SignIn = () => {
                         <input type="password" placeholder="Password" className="w-full h-12 text-lg mb-4 p-3 outline-0 border" />
                         <input className="w-full btn bg-dark" type="submit" value="Submit" />
                     </form>
-                    <div class="divider">OR</div>
+                    <div className="divider">OR</div>
                     <button className="w-full btn mb-2">Sign in with Google</button>
                 </div>
             </div>
