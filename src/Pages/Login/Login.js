@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from "../../firebase.init";
 const Login = () => {
+    // login with email and password
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
+    // sign in with google
+    const [signInWithGoogle, GUser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    /* const emailRef = useRef('');
+    const [sendPasswordResetEmail, sending, rError] = useSendPasswordResetEmail(auth);
+    const resetPassword = (event) => {
+        console.log(event.target.value.email);
+        console.log(emailRef.current.value);
+    } */
+
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => {
-        console.log(data)
+    const onSubmit = (data, event) => {
+        const email = data.email;
+        const password = data.password;
+        signInWithEmailAndPassword(email, password);
+        /*  event.target.reset() */
     }
     return (
         <section className="h-screen flex justify-center items-center">
@@ -27,19 +51,22 @@ const Login = () => {
                             className="w-full h-12 text-lg p-3 outline-0 border"
                             {...register("password", { required: true })}
                         />
-                        <div className="flex justify-between">
+                        <div className="mt-1">
+                            <button className="cursor-pointer text-right ">Forget Password</button>
                             {errors.password?.type === 'required' && <span className="text-red-500">Password is required</span>}
-                            <p className="cursor-pointer text-right">Forget Password</p>
+                            {error && <p className="text-red-500">{error.message}</p>}
                         </div>
-
                     </div>
 
                     <div>
-                        <input className="w-full btn bg-primary text-white" type="submit" value="Submit" />
+                        <input className="w-full btn bg-primary text-white border-none" type="submit" value="Submit" />
                     </div>
+
                 </form>
                 <div className="divider">OR</div>
-                <button className="w-full btn mb-2 bg-primary text-white">Sign in with Google</button>
+                <button onClick={() => signInWithGoogle()} className="w-full btn mb-2 bg-primary text-white border-none">Sign in with Google</button>
+
+                <p className="text-center mt-1">Not a Member ? <Link to="/signIn">Please SignUp</Link></p>
             </div>
         </section>
     )

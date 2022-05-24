@@ -9,7 +9,7 @@ const Header = () => {
         <li><Link to="/login">Login</Link></li>
     </>
     return (
-        <header className="bg-primary text-white">
+        <header className="bg-primary text-white sticky z-50 top-0">
             <nav>
                 <div className="navbar justify-between px-4 mx-auto max-w-7xl">
                     <div className="navbar-start">
