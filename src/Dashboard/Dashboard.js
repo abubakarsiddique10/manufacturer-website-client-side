@@ -4,7 +4,7 @@ const Dasbborad = () => {
     return (
         <section>
             <div className="container">
-                <h1>Welcome Dasbborad</h1>
+                {/* <h1>Welcome Dasbborad</h1> */}
                 <div class="drawer drawer-mobile">
                     <input id="my-drawer" type="checkbox" class="drawer-toggle" />
                     <div class="drawer-content flex flex-col">
@@ -13,11 +13,11 @@ const Dasbborad = () => {
                     </div>
                     <div class="drawer-side">
                         <label for="my-drawer" class="drawer-overlay"></label>
-                        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+                        <ul class="menu overflow-y-auto w-44 bg-base-100 text-base-content">
                             <li><Link to="/dashboard">Dasbborad</Link></li>
-                            <li><Link to="/dashboard/myorders">My Orders</Link></li>
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
+                            <li><Link to="/dashboard/addReview">Add Review</Link></li>
+                            <li><Link to="/dashboard/myProfile">My Profile</Link></li>
+
                         </ul>
                     </div>
                 </div>
