@@ -2,35 +2,63 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../firebase.init";
 const Purchase = () => {
     const [user] = useAuthState(auth);
     const { id } = useParams();
     const [tool, setTool] = useState({});
+    const [error, setError] = useState('');
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
             .then(data => setTool(data))
-    }, [])
+    }, [tool])
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = data => {
+    const onSubmit = (data, event) => {
+
+        // get order details
+        const bookingOrder = {
+            name: user.displayName,
+            email: user.email,
+            phone: data.phone,
+            orderQuantity: data.quantity,
+            address: data.address,
+        }
+
+        // update Available Stock
         const availableStock = tool.available;
         const quantity = parseInt(data.quantity);
         if (quantity <= availableStock && quantity >= 10) {
-            /* const available = availableStock - quantity; */
-            /* fetch(`http://localhost:5000/tools/${id}`, {
+            const available = availableStock - quantity;
+            fetch(`http://localhost:5000/tools/${id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
                 },
-                body: JSON.stringify(newValue)
-            }) */
+                body: JSON.stringify({ available })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        fetch('http://localhost:5000/booking', {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify({ bookingOrder })
+                        })
+                        setTool(data);
+                        setError('');
+                        toast("Your order has successfull");
+                    }
+                })
         }
         else if (quantity > availableStock) {
-            console.log('You can buy up to 500 products')
+            setError(`You can buy up to ${tool.available} products`)
         }
         else if (quantity < 10) {
-            console.log('You have to purchase at least 10 products')
+            setError("You have to purchase at least 10 products");
         }
     }
     return (
@@ -41,8 +69,8 @@ const Purchase = () => {
                         <img src={tool.image} className="max-w-[300px] h-auto" />
                         <div>
                             <h5 className="text-2xl font-medium mb-2">Name: {tool.name}</h5>
-                            <p className="text-lg font-medium">Available: {tool.available}</p>
-                            <p className="text-lg font-medium">Minimum Quantity: {tool.quantity}</p>
+                            <p className="text-lg font-medium">Available Stock: {tool.available}</p>
+                            <p className="text-lg font-medium">Minimum Order: {tool.quantity}</p>
                             <p className="text-lg font-medium">Price: {tool.price}</p>
                             <p className="text-lg">{tool.description}</p>
                         </div>
@@ -86,6 +114,7 @@ const Purchase = () => {
                                         className="w-full h-12 text-lg p-3 outline-0 border"
                                         {...register("quantity")}
                                     />
+                                    {error && <p className="text-red-500">{error}</p>}
                                 </div>
 
                                 <div className="mb-4">
@@ -98,7 +127,9 @@ const Purchase = () => {
                                 </div>
 
                                 <div>
-                                    <input className="w-full btn bg-primary text-white border-none" type="submit" value="Purchase" />
+                                    <input
+                                        className="w-full btn bg-primary text-white border-none"
+                                        type="submit" value="Purchase" />
                                 </div>
                             </form>
                         </div>

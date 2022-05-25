@@ -3,7 +3,6 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../firebase.init";
-
 const Header = () => {
     const [user] = useAuthState(auth);
 
@@ -13,8 +12,8 @@ const Header = () => {
 
     const manuItems = <>
         <li><Link to="/">Home</Link></li>
+        {user && <li><Link to="/dashboard">Dashboard</Link></li>}
         <li><Link to="/about">About</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/blog">Blog</Link></li>
         {!user ? <li><Link to="/login">Login</Link></li> : <button onClick={logout} className="text-left pl-4">Sign Out</button>}
     </>
