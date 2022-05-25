@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from "../../firebase.init";
 const Login = () => {
+    const navigate = useNavigate();
+    const loacation = useLocation();
+
     // login with email and password
     const [
         signInWithEmailAndPassword,
@@ -13,14 +16,12 @@ const Login = () => {
     ] = useSignInWithEmailAndPassword(auth);
 
     // sign in with google
-    const [signInWithGoogle, GUser, gLoading, gError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-    /* const emailRef = useRef('');
-    const [sendPasswordResetEmail, sending, rError] = useSendPasswordResetEmail(auth);
-    const resetPassword = (event) => {
-        console.log(event.target.value.email);
-        console.log(emailRef.current.value);
-    } */
+    let from = loacation.state?.from?.pathname || '/';
+    if (user || gUser) {
+        navigate(from, { replace: true });
+    }
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data, event) => {

@@ -1,50 +1,73 @@
-import React from "react";
-import img1 from '../../assets/images/tools/tool1.png';
-import img2 from '../../assets/images/tools/tool2.png';
-import img3 from '../../assets/images/tools/tool3.png';
-import img4 from '../../assets/images/tools/tool4.png';
-import img5 from '../../assets/images/tools/tool5.png';
-import img6 from '../../assets/images/tools/tool6.png';
-import img7 from '../../assets/images/tools/tool7.png';
-import img8 from '../../assets/images/tools/tool1.png';
+import React, { useEffect, useState } from "react";
 import Tool from "./Tool";
 
 const Tools = () => {
+    const [tools, setTools] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/tools')
+            .then(res => res.json())
+            .then(data => setTools(data))
+    }, [])
 
-    const tools = [
-        {
-            "name": "The Machine Screw",
-            "image": img1,
-            "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
-            "quantity": "100",
-            "available": "200",
-            "price": "10",
-        },
-        {
-            "name": "The Machine Screw",
-            "image": img2,
-            "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
-            "quantity": "100",
-            "available": "200",
-            "price": "10",
-        },
-        {
-            "name": "The Machine Screw",
-            "image": img3,
-            "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
-            "quantity": "100",
-            "available": "200",
-            "price": "10",
-        },
-        {
-            "name": "The Machine Screw",
-            "image": img4,
-            "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
-            "quantity": "100",
-            "available": "200",
-            "price": "10",
-        },
-    ]
+    const tool =
+        [
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/23jjfMk/tool1.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/jwBFjH0/tool2.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/hCBnvsW/tool3.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/CnYVz27/tool5.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/d5Hj3vr/tool4.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/pr7CQSL/tool6.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            },
+            {
+                "name": "The Machine Screw",
+                "image": "https://i.ibb.co/gr4sNkW/tool7.png",
+                "description": "Add an extra dose of style with this raw look henley t-shirt from the house of Tinted.",
+                "quantity": 10,
+                "available": 500,
+                "price": 5
+            }
+        ]
 
     return (
         <section className="background py-20">
@@ -52,7 +75,7 @@ const Tools = () => {
                 <h1 className="text-4xl text-center mb-8 font-medium">Our Different Hand Tools</h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {
-                        tools.map(tool => <Tool tool={tool} />)
+                        tools.map(tool => <Tool tool={tool} key={tool._id} />)
                     }
                 </div>
             </div>

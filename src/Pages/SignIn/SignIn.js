@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from "../../firebase.init";
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const SignIn = () => {
     // create user with email and password
@@ -15,13 +16,17 @@ const SignIn = () => {
 
     // sign in with google
     const [signInWithGoogle, GUser, gLoading, gError] = useSignInWithGoogle(auth);
-    let errorMessage;
 
+    const [updateProfile, updating, UError] = useUpdateProfile(auth);
+
+    let errorMessage;
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = (data, event) => {
+    const onSubmit = async (data, event) => {
+        const name = data.name;
         const email = data.email;
         const password = data.password;
-        createUserWithEmailAndPassword(email, password);
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name })
         event.target.reset();
     }
 
