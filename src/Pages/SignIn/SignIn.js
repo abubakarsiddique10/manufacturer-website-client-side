@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from "../../firebase.init";
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const SignIn = () => {
+    const navigate = useNavigate()
     // create user with email and password
     const [
         createUserWithEmailAndPassword,
@@ -32,6 +33,9 @@ const SignIn = () => {
 
     if (error || gError) {
         errorMessage = <p>{error.message || gError.message}</p>
+    }
+    if (user || GUser) {
+        navigate('/')
     }
     return (
         <section className="h-screen flex justify-center items-center">

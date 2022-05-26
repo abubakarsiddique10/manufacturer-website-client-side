@@ -6,7 +6,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
-    console.log(orders)
+
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booking?email=${user.email}`, {
@@ -20,7 +20,6 @@ const MyOrders = () => {
     }, [])
 
     const handlePayment = (id) => {
-        console.log(id)
         navigate(`/dashboard/payment/${id}`)
     }
     return (

@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import Review from "./Review";
 import icon1 from "../../assets/images/icons/icon1.png";
 const Reviews = () => {
-    const [reviewss, setReviess] = useState([]);
+    const [reviews, setRevies] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/reviews')
             .then(res => res.json())
-            .then(data => setReviess(data))
+            .then(data => setRevies(data))
     }, [])
-    console.log(reviewss)
-    const reviews = [
+    const maxReviews = reviews.concat().reverse().slice(0, 3)
+    const reviewss = [
         {
             "img": icon1,
             "name": "Fannie Moreno",
@@ -35,7 +35,7 @@ const Reviews = () => {
                 <h1 className="text-4xl text-center font-medium mb-10">Happy Customers Said</h1>
                 <div className="grid grid-cols-1 text-center md:text-left lg:grid-cols-2 gap-5">
                     {
-                        reviews.map(review => <Review review={review} />)
+                        maxReviews.map(review => <Review review={review} />)
                     }
                 </div>
             </div>

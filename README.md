@@ -1,9 +1,13 @@
-# Getting Started with Create React App
+# Hardware Zone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Hardware Zone](https://hardware-zone.web.app/).
 
-## Available Scripts
-
+## Website Features
+- React js
+- Tailwind
+- Firebase
+- React hook form
+- React Daisy UI
 In the project directory, you can run:
 
 ### `npm start`
