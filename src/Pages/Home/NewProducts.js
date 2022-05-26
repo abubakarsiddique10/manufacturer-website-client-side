@@ -11,22 +11,22 @@ import NewProduct from "./NewProduct";
 const NewProducts = () => {
     const tools = [
         {
-            card1: { "name": "Machine 1", "img": img1 },
-            card2: { "name": "abu 2", "img": img2 },
-            card3: { "name": "Machine 3", "img": img3 },
-            card4: { "name": "Machine 4", "img": img4 },
+            card1: { "name": "Maching screw 1", "img": img1 },
+            card2: { "name": "Maching screw 2", "img": img2 },
+            card3: { "name": "Maching screw 3", "img": img3 },
+            card4: { "name": "Maching screw 4", "img": img4 },
         },
         {
-            card1: { "name": "Machine 5", "img": img1 },
-            card2: { "name": "abu 6", "img": img2 },
-            card3: { "name": "Machine 7", "img": img3 },
-            card4: { "name": "Machine 8", "img": img4 },
+            card1: { "name": "Maching screw 5", "img": img1 },
+            card2: { "name": "Maching screw 6", "img": img2 },
+            card3: { "name": "Maching screw 7", "img": img3 },
+            card4: { "name": "Maching screw 8", "img": img4 },
         },
         {
-            card1: { "name": "Machine 9", "img": img1 },
-            card2: { "name": "abu 10", "img": img2 },
-            card3: { "name": "Machine 11", "img": img3 },
-            card4: { "name": "Machine 12", "img": img4 },
+            card1: { "name": "Maching screw 9", "img": img1 },
+            card2: { "name": "Maching screw 10", "img": img2 },
+            card3: { "name": "Maching screw 11", "img": img3 },
+            card4: { "name": "Maching screw 12", "img": img4 },
         },
 
     ]

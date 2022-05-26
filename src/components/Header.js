@@ -13,8 +13,8 @@ const Header = () => {
     const manuItems = <>
         <li><Link to="/">Home</Link></li>
         {user && <li><Link to="/dashboard">Dashboard</Link></li>}
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/blog">Blog</Link></li>
+        <li><Link to="/blogs">Blog</Link></li>
+        <li><Link to="/portfolio">Portfolio</Link></li>
         {!user ? <li><Link to="/login">Login</Link></li> : <button onClick={logout} className="text-left pl-4">Sign Out</button>}
     </>
 

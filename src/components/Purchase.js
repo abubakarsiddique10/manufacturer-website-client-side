@@ -9,6 +9,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [tool, setTool] = useState({});
     const [error, setError] = useState('');
+    console.log(user)
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
@@ -23,6 +24,7 @@ const Purchase = () => {
             email: user.email,
             phone: data.phone,
             orderQuantity: data.quantity,
+            price: data.quantity * 5,
             address: data.address,
         }
 

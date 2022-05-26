@@ -6,7 +6,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
-
+    console.log(orders)
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booking?email=${user.email}`, {
@@ -22,9 +22,22 @@ const MyOrders = () => {
     const handlePayment = (id) => {
         navigate(`/dashboard/payment/${id}`)
     }
+
+    const handleDelete = id => {
+        const permission = window.confirm('are you delete Product');
+        if (permission) {
+            fetch(`http://localhost:5000/booked/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const newOrders = orders.filter(order => order._id !== id);
+                    setOrders(newOrders)
+                })
+        }
+    }
     return (
         <div>
-            <h1>This my MyOrders {orders.length}</h1>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 
@@ -33,7 +46,9 @@ const MyOrders = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Quantity</th>
+                            <th>Price</th>
                             <th>Payment</th>
+
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,8 +58,9 @@ const MyOrders = () => {
                                 <th>{index + 1}</th>
                                 <td>{order.name}</td>
                                 <td>{order.orderQuantity}</td>
+                                <td>{order.price}</td>
                                 <td><button onClick={() => handlePayment(order._id)} className="btn btn-sm">Pay</button></td>
-                                <td><button className="btn btn-sm ">Delete</button></td>
+                                <td><button onClick={() => handleDelete(order._id)} className="btn btn-sm ">Delete</button></td>
                             </tr>)
                         }
                     </tbody>
