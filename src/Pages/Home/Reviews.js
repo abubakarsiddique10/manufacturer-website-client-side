@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Review from "./Review";
 import icon1 from "../../assets/images/icons/icon1.png";
 const Reviews = () => {
+    const [reviewss, setReviess] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setReviess(data))
+    }, [])
+    console.log(reviewss)
     const reviews = [
         {
             "img": icon1,
