@@ -6,7 +6,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
-    console.log(orders)
+
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booking?email=${user.email}`, {
@@ -20,6 +20,7 @@ const MyOrders = () => {
     }, [])
 
     const handlePayment = (id) => {
+        console.log(id)
         navigate(`/dashboard/payment/${id}`)
     }
 
@@ -48,7 +49,6 @@ const MyOrders = () => {
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Payment</th>
-
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -59,7 +59,11 @@ const MyOrders = () => {
                                 <td>{order.name}</td>
                                 <td>{order.orderQuantity}</td>
                                 <td>{order.price}</td>
-                                <td><button onClick={() => handlePayment(order._id)} className="btn btn-sm">Pay</button></td>
+                                <td>
+                                    {order.paid ?
+                                        <button className="btn btn-sm">Paid</button>
+                                        : <button onClick={() => handlePayment(order._id)} className="btn btn-sm">Pay</button>}
+                                </td>
                                 <td><button onClick={() => handleDelete(order._id)} className="btn btn-sm ">Delete</button></td>
                             </tr>)
                         }
