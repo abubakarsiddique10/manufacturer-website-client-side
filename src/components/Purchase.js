@@ -9,7 +9,7 @@ const Purchase = () => {
     const { id } = useParams();
     const [tool, setTool] = useState({});
     const [error, setError] = useState('');
-    console.log(user)
+
     useEffect(() => {
         fetch(`http://localhost:5000/tools/${id}`)
             .then(res => res.json())
@@ -131,6 +131,7 @@ const Purchase = () => {
                                 <div>
                                     <input
                                         className="w-full btn bg-primary text-white border-none"
+                                        disabled={error}
                                         type="submit" value="Purchase" />
                                 </div>
                             </form>

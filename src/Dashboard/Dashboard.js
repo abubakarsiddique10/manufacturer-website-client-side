@@ -5,7 +5,7 @@ import auth from "../firebase.init";
 const Dasbborad = () => {
     const [user] = useAuthState(auth);
     const [admin, setAdmin] = useState(false);
-    console.log(user)
+
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booked/${user.email}`, {
@@ -14,20 +14,20 @@ const Dasbborad = () => {
                 .then(res => res.json())
                 .then(data => setAdmin(data.admin))
         }
-    }, [])
+    }, [user])
     return (
         <section className="">
             <div className="container">
                 <h1 className="text-3xl text-center font-medium my-2">Welcome to Dasbborad</h1>
-                <div class="drawer drawer-mobile">
-                    <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-                    <div class="drawer-content flex flex-col">
+                <div className="drawer drawer-mobile">
+                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                    <div className="drawer-content flex flex-col">
                         <Outlet></Outlet>
-                        <label for="my-drawer" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                        <label htmlFor="my-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                     </div>
-                    <div class="drawer-side">
-                        <label for="my-drawer" class="drawer-overlay"></label>
-                        <ul class="menu overflow-y-auto w-48 bg-base-100 text-base-content">
+                    <div className="drawer-side">
+                        <label htmlFor="my-drawer" className="drawer-overlay"></label>
+                        <ul className="menu overflow-y-auto w-48 bg-base-100 text-base-content">
                             {!admin ? <>
                                 <li><Link to="/dashboard">Dasbborad</Link></li>
                                 <li><Link to="/dashboard/addReview">Add Review</Link></li>

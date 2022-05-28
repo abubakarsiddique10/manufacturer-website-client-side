@@ -2,7 +2,7 @@ import React from "react";
 const img = "https://ibb.co/2hgH3cc"
 const Summary = () => {
     return (
-        <section className="bg-gray-100 py-20">
+        <section className="background pt-24">
             <div className="container">
                 <div>
                     <h1 className="text-4xl text-center font-medium">Welcome To</h1>

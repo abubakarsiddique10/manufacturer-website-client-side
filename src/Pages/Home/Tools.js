@@ -11,9 +11,9 @@ const Tools = () => {
     }, [])
 
     return (
-        <section className="background py-20">
+        <section className="background pt-24">
             <div className="container">
-                <h1 className="text-4xl text-center mb-8 font-medium">Our Different Hand Tools</h1>
+                <h1 className="text-4xl text-center mb-12 font-medium">Our Different Hand Tools</h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {
                         maxTols.map(tool => <Tool tool={tool} key={tool._id} />)

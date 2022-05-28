@@ -11,9 +11,9 @@ import img2 from '../../assets/images/tools/tool2.png';
 import img3 from '../../assets/images/tools/tool3.png';
 export default () => {
     return (
-        <section className='py-20'>
+        <section className='py-24 background'>
             <div className='container'>
-                <h1 className="text-4xl text-center font-medium">Best Sell Tools</h1>
+                <h1 className="text-4xl text-center font-medium mb-14">Best Sell Tools</h1>
                 <>
                     <Swiper
                         slidesPerView={3}

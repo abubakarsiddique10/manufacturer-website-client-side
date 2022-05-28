@@ -7,7 +7,7 @@ const MyPortfolio = () => {
                     <div>
                         <h1 className="text-3xl font-bold">About Me</h1>
                         <p className="text-lg font-medium">Hi! My name is Muhammad Abu Bakar. I am Frontend Developer, and I'm very passionate and dedicated to my work. My goal is to become a skilled web developer. I work ten to twelve hours a day to achieve my goals
-                            I will continue to work like this till I reach my goal inshallah</p>
+                            I will continue to work like this till I reach my goal inshallah. My Email: <a href="">abubakarsiddique7912@gmail.com</a></p>
                     </div>
                     <div className="text-lg font-medium">
                         <h1 className="text-3xl text-bold mb-2"> My Skills</h1>

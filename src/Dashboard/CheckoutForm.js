@@ -121,7 +121,10 @@ const CheckoutForm = ({ order }) => {
                 cardError && <p className="text-red-500">{cardError}</p>
             }
             {
-                success && <p className="text-green-500">{success}</p>
+                success && <div>
+                    <p className="text-green-500">{success}</p>
+                    <p className="text-green-500">Trans Id: {transectionId}</p>
+                </div>
             }
         </>
     )

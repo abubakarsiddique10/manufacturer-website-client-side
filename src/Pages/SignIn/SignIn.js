@@ -21,13 +21,26 @@ const SignIn = () => {
     const [updateProfile, updating, UError] = useUpdateProfile(auth);
 
     let errorMessage;
+
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = async (data, event) => {
         const name = data.name;
         const email = data.email;
         const password = data.password;
         await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name })
+        await updateProfile({ displayName: name });
+
+        fetch('http://localhost:5000/login', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('accessToken', data.accessToken);
+            })
         event.target.reset();
     }
 
@@ -48,8 +61,9 @@ const SignIn = () => {
                             type="text"
                             placeholder="Name"
                             className="w-full h-12 text-lg p-3 outline-0 border"
-                            {...register("name")}
+                            {...register("name", { required: true })}
                         />
+                        {errors.name?.type === 'required' && <span className="text-red-500">Name is required</span>}
                     </div>
 
                     <div className="mb-4">

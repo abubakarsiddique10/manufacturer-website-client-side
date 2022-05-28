@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/Modal";
 import auth from "../firebase.init";
 const MyOrders = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
+    const [deleteOrder, setDeleteOrder] = useState(null);
 
     useEffect(() => {
         if (user) {
             fetch(`http://localhost:5000/booking?email=${user.email}`, {
                 method: "GET",
+                headers: {
+                    "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {
@@ -20,31 +25,15 @@ const MyOrders = () => {
     }, [])
 
     const handlePayment = (id) => {
-        console.log(id)
         navigate(`/dashboard/payment/${id}`)
-    }
-
-    const handleDelete = id => {
-        const permission = window.confirm('are you delete Product');
-        if (permission) {
-            fetch(`http://localhost:5000/booked/${id}`, {
-                method: "DELETE",
-            })
-                .then(res => res.json())
-                .then(data => {
-                    const newOrders = orders.filter(order => order._id !== id);
-                    setOrders(newOrders)
-                })
-        }
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
-
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>index</th>
                             <th>Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
@@ -64,12 +53,15 @@ const MyOrders = () => {
                                         <button className="btn btn-sm">Paid</button>
                                         : <button onClick={() => handlePayment(order._id)} className="btn btn-sm">Pay</button>}
                                 </td>
-                                <td><button onClick={() => handleDelete(order._id)} className="btn btn-sm ">Delete</button></td>
+                                <td>
+                                    <label onClick={() => setDeleteOrder(order)} htmlFor="delete-confirm" className="btn modal-button btn btn-sm ">Delete</label>
+                                </td>
                             </tr>)
                         }
                     </tbody>
                 </table>
             </div>
+            {deleteOrder && <Modal deleteOrder={deleteOrder} orders={orders} setOrders={setOrders} />}
         </div>
     )
 }

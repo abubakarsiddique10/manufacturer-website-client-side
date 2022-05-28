@@ -15,18 +15,18 @@ const Payment = () => {
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [])
-
+    console.log(order)
     return (
         <div className>
-            <div class="card w-96 bg-base-100 shadow-xl mb-6 mx-auto">
-                <div class="card-body">
-                    <h2 class="card-title">Hello, {order.name}</h2>
+            <div className="card w-96 bg-base-100 shadow-xl mb-6 mx-auto">
+                <div className="card-body">
+                    <h2 className="card-title">Hello, {order.name}</h2>
                     <p>Products Quantity {order.orderQuantity}</p>
-                    <span>Please Pay: {order.price}</span>
+                    <span>Please Pay: ${order.price}</span>
                 </div>
             </div>
-            <div class="card w-96 bg-base-100 shadow-xl mb-6 mx-auto">
-                <div class="card-body">
+            <div className="card w-96 bg-base-100 shadow-xl mb-6 mx-auto">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm order={order} />
                     </Elements>

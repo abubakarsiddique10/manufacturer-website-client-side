@@ -59,7 +59,7 @@ const AddReview = () => {
         <section>
             <div className="container">
                 <div className="w-full flex justify-center flex-col items-center mt-4">
-                    <div className="text-xl font-medium flex items-center justify-center w-full">
+                    <div className="text-xl font-medium md:flex md:text-left  text-center items-center  justify-center w-full">
                         <div className="avatar mr-5 mt-2 mr-10">
                             <div className="w-20 h-20 mx-auto mb-4 lg:mb-0 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                                 <img src={profile.image} />

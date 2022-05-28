@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Review from "./Review";
-import icon1 from "../../assets/images/icons/icon1.png";
 const Reviews = () => {
     const [reviews, setRevies] = useState([]);
     useEffect(() => {
@@ -8,34 +7,14 @@ const Reviews = () => {
             .then(res => res.json())
             .then(data => setRevies(data))
     }, [])
-    const maxReviews = reviews.concat().reverse().slice(0, 3)
-    const reviewss = [
-        {
-            "img": icon1,
-            "name": "Fannie Moreno",
-            "founder": "Founder Xarmarin",
-            "feedback": "I would say I highly recommend this to my friends, acquaintances and family members. The attitude and services are always dedicated.",
-        },
-        {
-            "img": icon1,
-            "name": "Fannie Moreno",
-            "founder": "Founder Xarmarin",
-            "feedback": "I would say I highly recommend this to my friends, acquaintances and family members. The attitude and services are always dedicated.",
-        },
-        {
-            "img": icon1,
-            "name": "Fannie Moreno",
-            "founder": "Founder Xarmarin",
-            "feedback": "I would say I highly recommend this to my friends, acquaintances and family members. The attitude and services are always dedicated.",
-        },
-    ]
+    const maxReviews = reviews.concat().reverse()
     return (
-        <section className="py-20 background">
+        <section className="pt-20 background">
             <div className="container">
-                <h1 className="text-4xl text-center font-medium mb-10">Happy Customers Said</h1>
+                <h1 className="text-4xl text-center font-medium mb-14">Happy Customers Said</h1>
                 <div className="grid grid-cols-1 text-center md:text-left lg:grid-cols-2 gap-5">
                     {
-                        maxReviews.map(review => <Review review={review} />)
+                        maxReviews.map(review => <Review review={review} key={review._id} />)
                     }
                 </div>
             </div>

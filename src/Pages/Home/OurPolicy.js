@@ -7,21 +7,25 @@ import SinglePolicy from "./SinglePolicy";
 const OurPolicy = () => {
     const ourPolicy = [
         {
+            "id": 1,
             "icon": icon1,
             "title": "Free Shipping",
             "info": "Free shipping on all US order",
         },
         {
+            "id": 2,
             "icon": icon2,
             "title": "Support 24/7",
             "info": "Contact us 24 hours a day",
         },
         {
+            "id": 3,
             "icon": icon3,
             "title": "100% Money Back",
             "info": "You have 30 days to Return",
         },
         {
+            "id": 4,
             "icon": icon4,
             "title": "Payment Secure",
             "info": "We ensure secure payment",
@@ -32,7 +36,7 @@ const OurPolicy = () => {
             <div className="container">
                 <div className="grid grid-cols-1 text-center md:text-left md:grid-cols-3 lg:grid-cols-4 gap-5">
                     {
-                        ourPolicy.map(policy => <SinglePolicy policy={policy} />)
+                        ourPolicy.map(policy => <SinglePolicy policy={policy} key={policy.id} />)
                     }
                 </div>
             </div>

@@ -20,11 +20,11 @@ const Header = () => {
 
 
     return (
-        <header className="bg-primary text-white sticky z-50 top-0">
+        <header className="bg-white shadow-md sticky z-50 top-0">
             <nav>
                 <div className="navbar justify-between px-4 mx-auto max-w-7xl">
                     <div className="navbar-start">
-                        <Link to='/' className="btn btn-ghost normal-case text-xl px-0">Hardware Zone</Link>
+                        <Link to='/' className=" normal-case text-xl px-0">Hardware Zone</Link>
                     </div>
                     <div className="dropdown">
                         <label tabIndex="0" className="btn btn-ghost lg:hidden">

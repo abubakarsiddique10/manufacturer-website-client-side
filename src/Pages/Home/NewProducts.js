@@ -1,42 +1,20 @@
-import React from "react";
-import img1 from "../../assets/images/tools/tool1.png";
-import img2 from "../../assets/images/tools/tool2.png";
-import img3 from "../../assets/images/tools/tool3.png";
-import img4 from "../../assets/images/tools/tool4.png";
-import img5 from "../../assets/images/tools/tool5.png";
-import img6 from "../../assets/images/tools/tool6.png";
-import img7 from "../../assets/images/tools/tool7.png";
-import img8 from "../../assets/images/tools/tool1.png";
+import React, { useEffect, useState } from "react";
 import NewProduct from "./NewProduct";
 const NewProducts = () => {
-    const tools = [
-        {
-            card1: { "name": "Maching screw 1", "img": img1 },
-            card2: { "name": "Maching screw 2", "img": img2 },
-            card3: { "name": "Maching screw 3", "img": img3 },
-            card4: { "name": "Maching screw 4", "img": img4 },
-        },
-        {
-            card1: { "name": "Maching screw 5", "img": img1 },
-            card2: { "name": "Maching screw 6", "img": img2 },
-            card3: { "name": "Maching screw 7", "img": img3 },
-            card4: { "name": "Maching screw 8", "img": img4 },
-        },
-        {
-            card1: { "name": "Maching screw 9", "img": img1 },
-            card2: { "name": "Maching screw 10", "img": img2 },
-            card3: { "name": "Maching screw 11", "img": img3 },
-            card4: { "name": "Maching screw 12", "img": img4 },
-        },
+    const [tools, setTools] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/newproducts')
+            .then(res => res.json())
+            .then(data => setTools(data))
+    }, [])
 
-    ]
     return (
-        <section className="background py-20">
+        <section className="background pt-24">
             <div className="container">
-                <h1 className="text-4xl text-center mb-8 font-medium">Our New Products</h1>
+                <h1 className="text-4xl text-center mb-12 font-medium">Our New Products</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
-                        tools.map(tool => <NewProduct tool={tool} />)
+                        tools.map(tool => <NewProduct tool={tool} key={tool._id} />)
                     }
                 </div>
             </div>

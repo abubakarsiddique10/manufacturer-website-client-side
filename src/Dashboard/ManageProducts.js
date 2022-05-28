@@ -24,8 +24,8 @@ const ManageProducts = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
 
                     <thead>
                         <tr>
@@ -41,8 +41,8 @@ const ManageProducts = () => {
                             products.map((product, index) => <tr key={product._id}>
                                 <th>{index + 1}</th>
                                 <td>
-                                    <div class="avatar">
-                                        <div class="w-16 rounded">
+                                    <div className="avatar">
+                                        <div className="w-16 rounded">
                                             <img src={product.image} alt="Prduct" />
                                         </div>
                                     </div></td>
