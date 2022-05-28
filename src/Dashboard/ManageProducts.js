@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/tools')
+        fetch('https://immense-temple-92933.herokuapp.com/tools')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -10,7 +10,7 @@ const ManageProducts = () => {
     const handleDelete = id => {
         const permission = window.confirm('are you delete Product');
         if (permission) {
-            fetch(`http://localhost:5000/tools/${id}`, {
+            fetch(`https://immense-temple-92933.herokuapp.com/tools/${id}`, {
                 method: "DELETE",
             })
                 .then(res => res.json())

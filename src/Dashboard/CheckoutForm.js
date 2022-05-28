@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
     useEffect(() => {
         if (price) {
 
-            fetch('http://localhost:5000/create-payment-intent', {
+            fetch('https://immense-temple-92933.herokuapp.com/create-payment-intent', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
@@ -77,7 +77,7 @@ const CheckoutForm = ({ order }) => {
                 transectionId: paymentIntent.id,
             }
 
-            fetch(`http://localhost:5000/booked/${_id}`, {
+            fetch(`https://immense-temple-92933.herokuapp.com/booked/${_id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",

@@ -3,7 +3,7 @@ import NewProduct from "./NewProduct";
 const NewProducts = () => {
     const [tools, setTools] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/newproducts')
+        fetch('https://immense-temple-92933.herokuapp.com/newproducts')
             .then(res => res.json())
             .then(data => setTools(data))
     }, [])

@@ -30,7 +30,7 @@ const SignIn = () => {
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
 
-        fetch('http://localhost:5000/login', {
+        fetch('https://immense-temple-92933.herokuapp.com/login', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',
