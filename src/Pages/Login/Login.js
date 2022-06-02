@@ -28,7 +28,7 @@ const Login = () => {
         const email = data.email;
         const password = data.password;
         signInWithEmailAndPassword(email, password);
-        /*  event.target.reset() */
+        event.target.reset()
     }
     return (
         <section className="h-screen flex justify-center items-center">
