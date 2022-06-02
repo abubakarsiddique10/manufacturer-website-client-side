@@ -15,7 +15,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    // sign in with google
+    // signin with google
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     let from = loacation.state?.from?.pathname || '/';
