@@ -15,7 +15,7 @@ const Blogs = () => {
                         </p>
                     </div>
                     <div className="text-lg">
-                        <h1 className="text-2xl font-medium"> Are the different ways to manage a state in a React application?</h1>
+                        <h1 className="text-2xl font-medium"> Are the different ways to manage a state in a React application? </h1>
                         <p>
                             Every React component has a built-in state. This state is an object which stores the property values that belong to a component. State is able to keep data from different components in-sync because each state update re-renders all relevant components.
                             There are several other ways to manage state​s in React, including the use of:
