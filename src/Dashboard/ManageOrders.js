@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
-import auth from "../firebase.init";
+
 const ManageOrders = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://immense-temple-92933.herokuapp.com/booked')
+        fetch('http://localhost:5000/booked')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [products])
-    console.log(products)
+    }, [])
+
     const makeAdmin = (email) => {
-        fetch(`https://immense-temple-92933.herokuapp.com/booked?email=${email}`, {
+        fetch(`http://localhost:5000/booked?email=${email}`, {
             method: "PUT",
         })
             .then(res => res.json())

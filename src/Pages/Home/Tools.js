@@ -5,7 +5,7 @@ const Tools = () => {
     const [tools, setTools] = useState([]);
     const maxTols = tools.slice(0, 8)
     useEffect(() => {
-        fetch('https://immense-temple-92933.herokuapp.com/tools')
+        fetch('http://localhost:5000/tools')
             .then(res => res.json())
             .then(data => setTools(data))
     }, [])

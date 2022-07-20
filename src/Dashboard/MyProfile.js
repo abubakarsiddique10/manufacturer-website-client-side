@@ -11,7 +11,7 @@ const AddReview = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://immense-temple-92933.herokuapp.com/profiles?email=${user.email}`, {
+            fetch(`http://localhost:5000/profiles?email=${user.email}`, {
                 method: "GET",
             })
                 .then(res => res.json())
@@ -38,7 +38,7 @@ const AddReview = () => {
                         location: data.location,
                         education: data.education,
                     }
-                    fetch(`https://immense-temple-92933.herokuapp.com/profiles?email=${user.email}`, {
+                    fetch(`http://localhost:5000/profiles?email=${user.email}`, {
                         method: "PUT",
                         headers: {
                             "content-type": "application/json",

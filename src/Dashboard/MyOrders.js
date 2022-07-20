@@ -10,19 +10,21 @@ const MyOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
 
     useEffect(() => {
-        if (user) {
-            fetch(`https://immense-temple-92933.herokuapp.com/booking?email=${user.email}`, {
-                method: "GET",
-                headers: {
-                    "authorization": `Bearer ${localStorage.getItem('accessToken')}`
+        fetch(`http://localhost:5000/booking?email=${user.email}`, {
+            method: "GET",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    navigate('/login')
                 }
+                return res.json()
             })
-                .then(res => res.json())
-                .then(data => {
-                    setOrders(data)
-                })
-        }
+            .then(data => setOrders(data))
     }, [])
+
 
     const handlePayment = (id) => {
         navigate(`/dashboard/payment/${id}`)

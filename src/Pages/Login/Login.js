@@ -28,7 +28,20 @@ const Login = () => {
         const email = data.email;
         const password = data.password;
         signInWithEmailAndPassword(email, password);
+
+        fetch(`http://localhost:5000/login`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                localStorage.setItem('accessToken', data.accessToken);
+            })
         event.target.reset()
+
     }
     return (
         <section className="h-screen flex justify-center items-center">
@@ -73,4 +86,8 @@ const Login = () => {
     )
 }
 export default Login;
+
+//http://localhost:5000
+
+// https://git.heroku.com/immense-temple-92933.git
 

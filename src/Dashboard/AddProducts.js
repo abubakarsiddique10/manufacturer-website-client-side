@@ -24,7 +24,7 @@ const AddProducts = () => {
                         price: data.price,
                         description: data.description,
                     }
-                    fetch('https://immense-temple-92933.herokuapp.com/tools', {
+                    fetch('http://localhost:5000/tools', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",

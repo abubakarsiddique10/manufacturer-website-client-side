@@ -8,7 +8,7 @@ const Dasbborad = () => {
 
     useEffect(() => {
         if (user) {
-            fetch(`https://immense-temple-92933.herokuapp.com/booked/${user.email}`, {
+            fetch(`http://localhost:5000/booked/${user.email}`, {
                 method: "GET",
             })
                 .then(res => res.json())
