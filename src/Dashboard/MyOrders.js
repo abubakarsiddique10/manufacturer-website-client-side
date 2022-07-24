@@ -10,7 +10,7 @@ const MyOrders = () => {
     const [deleteOrder, setDeleteOrder] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booking?email=${user.email}`, {
+        fetch(`https://immense-temple-92933.herokuapp.com/booking?email=${user.email}`, {
             method: "GET",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

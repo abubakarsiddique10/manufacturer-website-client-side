@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 const ManageOrders = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/booked')
+        fetch('https://immense-temple-92933.herokuapp.com/booked')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
     const makeAdmin = (email) => {
-        fetch(`http://localhost:5000/booked?email=${email}`, {
+        fetch(`https://immense-temple-92933.herokuapp.com/booked?email=${email}`, {
             method: "PUT",
         })
             .then(res => res.json())

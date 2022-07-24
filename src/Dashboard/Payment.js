@@ -11,7 +11,7 @@ const Payment = () => {
     const [order, setOrder] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/booking/${id}`)
+        fetch(`https://immense-temple-92933.herokuapp.com/booking/${id}`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [])

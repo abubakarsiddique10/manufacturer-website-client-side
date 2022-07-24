@@ -11,7 +11,7 @@ const Purchase = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tools/${id}`)
+        fetch(`https://immense-temple-92933.herokuapp.com/tools/${id}`)
             .then(res => res.json())
             .then(data => setTool(data))
     }, [tool])
@@ -33,7 +33,7 @@ const Purchase = () => {
         const quantity = parseInt(data.quantity);
         if (quantity <= availableStock && quantity >= 10) {
             const available = availableStock - quantity;
-            fetch(`http://localhost:5000/tools/${id}`, {
+            fetch(`https://immense-temple-92933.herokuapp.com/tools/${id}`, {
                 method: "PATCH",
                 headers: {
                     "content-type": "application/json",
@@ -43,7 +43,7 @@ const Purchase = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data) {
-                        fetch('http://localhost:5000/booking', {
+                        fetch('https://immense-temple-92933.herokuapp.com/booking', {
                             method: "POST",
                             headers: {
                                 "content-type": "application/json"

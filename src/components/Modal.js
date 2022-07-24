@@ -1,7 +1,7 @@
 import React from "react";
 const Modal = ({ deleteOrder, orders, setOrders }) => {
     const handleDelete = id => {
-        fetch(`http://localhost:5000/booked/${id}`, {
+        fetch(`https://immense-temple-92933.herokuapp.com/booked/${id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

@@ -22,7 +22,7 @@ const AddReview = () => {
                         companyName: data.founder,
                         description: data.description,
                     }
-                    fetch('http://localhost:5000/reviews', {
+                    fetch('https://immense-temple-92933.herokuapp.com/reviews', {
                         method: "POST",
                         headers: {
                             "content-type": "application/json",
