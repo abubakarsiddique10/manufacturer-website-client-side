@@ -3,7 +3,8 @@ import Tool from "./Tool";
 
 const Tools = () => {
     const [tools, setTools] = useState([]);
-    const maxTols = tools.slice(0, 8)
+    const maxTols = tools.slice(0, 8);
+
     useEffect(() => {
         fetch('https://immense-temple-92933.herokuapp.com/tools')
             .then(res => res.json())

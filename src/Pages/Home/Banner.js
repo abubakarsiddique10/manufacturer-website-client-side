@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <section className="bg-[#08151B] text-white">
             <div className="container">
-                <div className="hero-content justify-between p-0 flex-col lg:flex-row-reverse box-border items-center min-h-[520px] py-[80px] gap-10">
+                <div className="hero-content justify-between p-0 flex-col lg:flex-row-reverse box-border items-center min-h-[675px] py-[80px] gap-10">
                     <img src="https://i.ibb.co/MnM0mvh/1-removebg-preview.png" className="sm:max-w-sm lg:max-w-lg rounded-lg max-w-[200px]" />
                     <div>
                         <h1 className="text-[44px] font-bold mt-6 lg:mt-0">Shop our Best Brands of Tools</h1>
